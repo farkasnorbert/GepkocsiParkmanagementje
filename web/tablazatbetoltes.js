@@ -93,13 +93,18 @@ function feltolt(elsonap,napokszama) {
                     c="Green";
                 }
                 var i;
+                var html;
                 if(indulas<=erkezes) {
                     for ( i=indulas;i<=erkezes;i++){
-                        document.getElementById("nap"+i.toString()).innerHTML += "<br><form action='utazas.php' method='post'><button id='idUtazas' type='submit' class='btn btn-info' value='"+o["idUtazas"]+"' style='background-color: "+c+"'>"+o["Nev"]+"</button></form>"
+                        console.log(o["idUtazas"]);
+                        html = "<br><form action='utazas.php' method='post'><button id='idUtazas' name='idUtazas' type='submit' class='btn btn-info' value='"+o["idUtazas"]+"' style='background-color: "+c+"'>"+o["Nev"]+"</button></form>";
+                        document.getElementById("nap"+i.toString()).innerHTML += html;
                     }
                 }else{
                     for ( i=indulas;i<=napokszama;i++){
-                        document.getElementById("nap"+i.toString()).innerHTML += "<br><form action='utazas.php' method='post'><button id='idUtazas' type='submit' class='btn btn-info' value='"+o["idUtazas"]+"' style='background-color: "+c+"'>"+o["Nev"]+"</button></form>"
+                        console.log(o["idUtazas"]);
+                        html = "<br><form action='utazas.php' method='post'><button id='idUtazas' name='idUtazas' type='submit' class='btn btn-info' value='"+o["idUtazas"]+"' style='background-color: "+c+"'>"+o["Nev"]+"</button></form>";
+                        document.getElementById("nap"+i.toString()).innerHTML += html;
                     }
                 }
             }
