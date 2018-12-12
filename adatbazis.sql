@@ -21,7 +21,7 @@ USE `mydb` ;
 -- Table `mydb`.`Felhasznalok`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Felhasznalok` (
-  `idFelhasznalok` INT NOT NULL,
+  `idFelhasznalok` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NOT NULL,
   `jelszo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idFelhasznalok`),
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Felhasznalok` (
 -- Table `mydb`.`Auto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Auto` (
-  `idAuto` INT NOT NULL,
+  `idAuto` INT NOT NULL AUTO_INCREMENT,
   `Nev` VARCHAR(45) NULL,
   `muszaki_lejarat` DATETIME NULL,
   `kotelezo_biztositas_lejarat` DATETIME NULL,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Auto` (
 -- Table `mydb`.`Utazas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Utazas` (
-  `idUtazas` INT NOT NULL,
+  `idUtazas` INT NOT NULL AUTO_INCREMENT,
   `Sofor` INT NULL,
   `indulas` DATETIME NULL,
   `haza_erkezes` DATETIME NULL,
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Utazas` (
 -- Table `mydb`.`Utazo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Utazo` (
-  `idUtazo` INT NOT NULL,
+  `idUtazo` INT NOT NULL AUTO_INCREMENT,
   `Nev` VARCHAR(45) NULL,
   `Utazo_tipus` VARCHAR(45) NULL,
   `Utazas_id` INT NOT NULL,

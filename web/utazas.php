@@ -45,47 +45,52 @@
         $utazasid = $_POST["idUtazas"];
         $u = select("idUtazas,Sofor,indulas,haza_erkezes,Celalomas,Utasok_szama,Utazas_celja,Auto,Igenylo", "utazas", "idUtazas=" . $utazasid);
         $utazas = json_decode($u, true);
-        echo $utazas[1];
+        //echo $utazas[1];
         $utazas = json_decode($utazas[1], true);
 
         ?>
         <div class="container">
             <form action="valtoztat.php" method="post">
                 <div class="form-group">
-                    <select name="auto">
+                    <label for="auto">Auto</label>
+                    <select name="auto" class="form-control">
                         <?php
                         $a = select("idAuto,Nev", "auto", "1");
                         $autok = json_decode($a, true);
-                        echo $autok;
-                        foreach ($autok as $auto) {
-                            echo "<option value='" . $auto["idAuto"] . ">" . $auto["Nev"] . "</option>";
+                        foreach ($autok as $auto){
+                            $a = json_decode($auto,true);
+                            if($a["idAuto"]==$utazas["Auto"]){
+                                echo "<option value='{$a['idAuto']}' selected>" . $a["Nev"] . "</option>";
+                            }else {
+                                echo "<option value='{$a['idAuto']}'>" . $a["Nev"] . "</option>";
+                            }
                         }
                         ?>
-                    </select>
+                    </select><br>
                     <label for="sofor">Sofor</label>
                     <?php
-                    echo "<input type='text' class='form - control' name='sofor' id='sofor' value='"."'>";
-                    ?>
+                    echo "<input type='text' class='form-control' name='sofor' id='sofor' value='".$utazas["Sofor"]."'>";
+                    ?><br>
                     <label for="indulas">Indulas</label>
                     <?php
-                    echo "<input type='date' class='form - control' name='indulas' id='indulas' value='"."'>";
-                    ?>
+                    echo "<input type='datetime-local' class='form-control' name='indulas' id='indulas' value='".$utazas["indulas"]."'>";
+                    ?><br>
                     <label for="erkezes">Erkezes</label>
                     <?php
-                    echo "<input type='date' class='form - control' name='erkezes' id='erkezes' value='"."'>";
-                    ?>
+                    echo "<input type='datetime-local' class='form-control' name='erkezes' id='erkezes' value='".$utazas["haza_erkezes"]."'>";
+                    ?><br>
                     <label for="celpont">Celpont</label>
                     <?php
-                    echo "<input type='text' class='form - control' name='celpont' id='celpont' value='"."'>";
-                    ?>
+                    echo "<input type='text' class='form-control' name='celpont' id='celpont' value='".$utazas["Celalomas"]."'>";
+                    ?><br>
                     <label for="utazasCelja">Utazas celja</label>
                     <?php
-                    echo "<input type='text' class='form - control' name='utazasCelja' id='utazasCelja' value='"."'>";
-                    ?>
+                    echo "<input type='text' class='form-control' name='utazasCelja' id='utazasCelja' value='".$utazas["Utazas_celja"]."'>";
+                    ?><br>
                     <label for="utasokSzama">Utasok szama</label>
                     <?php
-                    echo "<input type='number' class='form - control' name='utasokSzama' id='utasokSzama' onchange='utasok()' value='"."'>";
-                    ?>
+                    echo "<input type='number' class='form-control' name='utasokSzama' id='utasokSzama' onchange='utasok()' value='".$utazas["Utasok_szama"]."'>";
+                    ?><br>
                     <div id="utazasok" class="form-group"/>
                 </div>
             </form>

@@ -41,23 +41,28 @@
 <div class="container">
     <form action="kervenfel.php" method="post">
         <div class="form-group">
-            <select name="auto">
+            <label for="auto">Auto</label>
+            <select name="auto" class="form-control" id="auto">
                 <?php
                 include 'mysql.php';
+                if (!empty($_POST)) {
+                    $indulas = $_POST["start"];
+                    $erkezes = $_POST["end"];
+                }
                 $a=select("idAuto,Nev","auto","1");
                 $autok=json_decode($a, true);
-                echo $autok;
                 foreach ($autok as $auto){
-                    echo "<option value='".$auto["idAuto"].">".$auto["Nev"]."</option>";
+                    $a = json_decode($auto,true);
+                    echo "<option value='{$a['idAuto']}'>".$a["Nev"]."</option>";
                 }
                 ?>
             </select>
             <label for="sofor">Sofor</label>
             <input type="text" class="form-control" name="sofor" id="sofor">
             <label for="indulas">Indulas</label>
-            <input type="date" class="form-control" name="indulas" id="indulas">
+            <input type="datetime-local" class="form-control" name="indulas" id="indulas">
             <label for="erkezes">Erkezes</label>
-            <input type="date" class="form-control" name="erkezes" id="erkezes">
+            <input type="datetime-local" class="form-control" name="erkezes" id="erkezes">
             <label for="celpont">Celpont</label>
             <input type="text" class="form-control" name="celpont" id="celpont">
             <label for="utazasCelja">Utazas celja</label>
@@ -65,11 +70,10 @@
             <label for="utasokSzama">Utasok szama</label>
             <input type="number" class="form-control" name="utasokSzama" id="utasokSzama" onchange="utasok()">
             <div id="utazasok" class="form-group"/>
+            <input type="submit" class="form-control">
         </div>
     </form>
 </div>
 </body>
 </html>
-<?php
-include 'mysql.php';
 

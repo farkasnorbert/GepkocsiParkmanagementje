@@ -23,12 +23,14 @@ function select($columns,$table,$where){
             $i++;
         }
     }
+    mysqli_close($conn);
     return json_encode($r);
 }
 function insert($table,$columns,$data){
     $sql = "INSERT INTO ".$table." (".$columns.") values (".$data.")";
     $conn = connect();
     if(mysqli_query($conn, $sql)){
+        mysqli_close($conn);
         return 0;
     }else{
         return $sql.mysqli_error($conn);
@@ -38,6 +40,7 @@ function update($table,$column,$data,$where){
     $sql = "UPDATE ".$table." SET ".$column."=".$data." where ".$where;
     $conn = connect();
     if (mysqli_query($conn, $sql)) {
+        mysqli_close($conn);
         return 0;
     } else {
         return mysqli_error($conn);
