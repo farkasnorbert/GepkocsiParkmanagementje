@@ -2,11 +2,12 @@
 
 //load.php
 
-$connect = new PDO('mysql:host=localhost;dbname=testing', 'root', '');
+$connect = new PDO('mysql:host=localhost;dbname=mydb', 'root', '');
 
 $data = array();
 
-$query = "SELECT * FROM events ORDER BY id";
+$query = "SELECT * FROM utazas 
+		INNER JOIN auto ON utazas.Auto= auto.idAuto";
 
 $statement = $connect->prepare($query);
 
@@ -17,10 +18,10 @@ $result = $statement->fetchAll();
 foreach($result as $row)
 {
  $data[] = array(
-  'id'   => $row["id"],
-  'title'   => $row["title"],
-  'start'   => $row["start_event"],
-  'end'   => $row["end_event"]
+  'id'   => $row["idUtazas"],
+  'title'   => "Hova:".$row["Celalomas"]." "."Auto:".$row["Nev"],
+   'start'   => $row["indulas"],
+  'end'   => $row["haza_erkezes"]
  );
 }
 
