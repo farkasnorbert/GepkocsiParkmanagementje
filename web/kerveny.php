@@ -25,6 +25,8 @@
                 input.type = "text";
                 input.name = "utas" + i;
                 input.id = "utas" + i;
+                input.class = "form-control";
+                input2.class = "form-control";
                 input2.type = "text";
                 input2.name = "utas"+i+"tipus";
                 input2.id = "utas"+i+"tipus";

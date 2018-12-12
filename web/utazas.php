@@ -89,9 +89,21 @@
                     ?><br>
                     <label for="utasokSzama">Utasok szama</label>
                     <?php
-                    echo "<input type='number' class='form-control' name='utasokSzama' id='utasokSzama' onchange='utasok()' value='".$utazas["Utasok_szama"]."'>";
+                    echo "<input type='number' class='form-control' name='utasokSzama' id='utasokSzama' value='".$utazas["Utasok_szama"]."'>";
                     ?><br>
-                    <div id="utazasok" class="form-group"/>
+                    <div id="utazasok" class="form-group">
+                        <?php
+                        $ut = select("*","utazo","Utazas_id=".$utazas["idUtazas"]);
+                        $utasok = json_decode($ut,true);
+                        $i=1;
+                        foreach ($utasok as $utas){
+                            $azutas = json_decode($utas,true);
+                            echo "<label for='utas{$i}'>Utas{$i} nev</label><input type='text' name'utas{$i}' id='utas{$i}' class='form-control' value='{$azutas['Nev']}'";
+                            echo "<label for='utas{$i}tipus'>Utas{$i} tipus</label><input type='text' name'utas{$i}tipus' id='utas{$i}tipus' class='form-control' value='{$azutas['Utazo_tipus']}'";
+                            $i +=1;
+                        }
+                        ?>
+                    </div>
                 </div>
             </form>
         </div>
