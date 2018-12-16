@@ -30,8 +30,7 @@ function insert($table,$columns,$data){
     $sql = "INSERT INTO ".$table." (".$columns.") values (".$data.")";
     $conn = connect();
     if(mysqli_query($conn, $sql)){
-        mysqli_close($conn);
-        return 0;
+        return mysqli_insert_id($conn);
     }else{
         return $sql.mysqli_error($conn);
     }

@@ -60,19 +60,28 @@
                 ?>
             </select>
             <label for="sofor">Sofor</label>
-            <input type="text" class="form-control" name="sofor" id="sofor">
+            <select class="form-control" name="sofor" id="sofor">
+            <?php
+            $v=select("felhasznalok.idFelhasznalok,felhasznalok.Nev","felhasznalok INNER JOIN felhasznalo_tipus ON felhasznalok.idFelhasznalok=felhasznalo_tipus.Felhasznalo_id","felhasznalo_tipus.Vezeto=1");
+            $vezetok=json_decode($v, true);
+            foreach ($vezetok as $vezeto){
+                $v = json_decode($vezeto,true);
+                echo "<option value='{$v['idFelhasznalok']}'>".$v["Nev"]."</option>";
+            }
+            ?>
+            </select>
             <label for="indulas">Indulas</label>
-            <input type="datetime-local" class="form-control" name="indulas" id="indulas">
+            <input type="date" class="form-control" name="indulas" id="indulas">
             <label for="erkezes">Erkezes</label>
-            <input type="datetime-local" class="form-control" name="erkezes" id="erkezes">
+            <input type="date" class="form-control" name="erkezes" id="erkezes">
             <label for="celpont">Celpont</label>
             <input type="text" class="form-control" name="celpont" id="celpont">
             <label for="utazasCelja">Utazas celja</label>
             <input type="text" class="form-control" name="utazasCelja" id="utazasCelja">
             <label for="utasokSzama">Utasok szama</label>
             <input type="number" class="form-control" name="utasokSzama" id="utasokSzama" onchange="utasok()">
-            <div id="utazasok" class="form-group"/>
             <input type="submit" class="form-control">
+            <div id="utazasok"/>
         </div>
     </form>
 </div>
