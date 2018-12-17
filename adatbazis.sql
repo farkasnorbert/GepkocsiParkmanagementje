@@ -22,6 +22,7 @@ USE `mydb` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Felhasznalok` (
   `idFelhasznalok` INT NOT NULL AUTO_INCREMENT,
+  `Nev` VARCHAR(45),
   `email` VARCHAR(45) NOT NULL,
   `jelszo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idFelhasznalok`),

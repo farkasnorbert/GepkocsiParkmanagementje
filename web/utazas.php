@@ -45,7 +45,6 @@
         $utazasid = $_POST["idUtazas"];
         $u = select("idUtazas,Sofor,indulas,haza_erkezes,Celalomas,Utasok_szama,Utazas_celja,Auto,Igenylo", "utazas", "idUtazas=" . $utazasid);
         $utazas = json_decode($u, true);
-        //echo $utazas[1];
         $utazas = json_decode($utazas[1], true);
 
         ?>
@@ -68,16 +67,27 @@
                         ?>
                     </select><br>
                     <label for="sofor">Sofor</label>
-                    <?php
-                    echo "<input type='text' class='form-control' name='sofor' id='sofor' value='".$utazas["Sofor"]."'>";
-                    ?><br>
+                    <select class="form-control" name="sofor" id="sofor">
+                        <?php
+                        $v=select("felhasznalok.idFelhasznalok,felhasznalok.Nev","felhasznalok INNER JOIN felhasznalo_tipus ON felhasznalok.idFelhasznalok=felhasznalo_tipus.Felhasznalo_id","felhasznalo_tipus.Vezeto=1");
+                        $vezetok=json_decode($v, true);
+                        foreach ($vezetok as $vezeto){
+                            $v = json_decode($vezeto,true);
+                            if($utazas["Sofor"]==$vezeto["idFelhasznalok"]) {
+                                echo "<option value='{$v['idFelhasznalok']}' selected>" . $v["Nev"] . "</option>";
+                            }else{
+                                echo "<option value='{$v['idFelhasznalok']}'>" . $v["Nev"] . "</option>";
+                            }
+                        }
+                        ?>
+                    </select><br>
                     <label for="indulas">Indulas</label>
                     <?php
-                    echo "<input type='datetime-local' class='form-control' name='indulas' id='indulas' value='".$utazas["indulas"]."'>";
+                    echo "<input type='date' class='form-control' name='indulas' id='indulas' value='".$utazas["indulas"]."'>";
                     ?><br>
                     <label for="erkezes">Erkezes</label>
                     <?php
-                    echo "<input type='datetime-local' class='form-control' name='erkezes' id='erkezes' value='".$utazas["haza_erkezes"]."'>";
+                    echo "<input type='date' class='form-control' name='erkezes' id='erkezes' value='".$utazas["haza_erkezes"]."'>";
                     ?><br>
                     <label for="celpont">Celpont</label>
                     <?php
@@ -104,6 +114,9 @@
                         }
                         ?>
                     </div>
+                    <?php
+                    echo "<input type='submit' name='idUtazas' class='form-control' value='".$utazasid."'>";
+                    ?>
                 </div>
             </form>
         </div>

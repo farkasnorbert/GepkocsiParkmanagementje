@@ -50,6 +50,9 @@
                 if (!empty($_POST)) {
                     $indulas = $_POST["start"];
                     $erkezes = $_POST["end"];
+                }else{
+                    $indulas = "";
+                    $erkezes = "";
                 }
                 $a=select("idAuto,Nev","auto","1");
                 $autok=json_decode($a, true);
@@ -71,9 +74,13 @@
             ?>
             </select>
             <label for="indulas">Indulas</label>
-            <input type="date" class="form-control" name="indulas" id="indulas">
+            <?php
+            echo "<input type='date' class='form-control' name='indulas' id='indulas' value='{$indulas}'>";
+            ?>
             <label for="erkezes">Erkezes</label>
-            <input type="date" class="form-control" name="erkezes" id="erkezes">
+            <?php
+            echo "<input type='date' class='form-control' name='erkezes' id='erkezes' value='{$erkezes}'>";
+            ?>
             <label for="celpont">Celpont</label>
             <input type="text" class="form-control" name="celpont" id="celpont">
             <label for="utazasCelja">Utazas celja</label>
