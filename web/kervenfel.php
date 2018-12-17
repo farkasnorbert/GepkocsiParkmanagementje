@@ -16,5 +16,6 @@ if (!empty($_POST)) {
             $utas_tipus = $_POST["utas{$i}tipus"];
             $in=insert("utazo","Nev,Utazo_tipus,Utazas_id","'".$utas."','".$utas_tipus."','".$ins."'");
         }
+        header('Location: index.php');
     }
 }
