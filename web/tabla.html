@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="tablazatbetoltes.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th><button type="button" onclick="mozgas(-1)" class="btn btn-link"><</button></th>
+            <th id="honap" colspan="5"></th>
+            <th><button type="button" onclick="mozgas(1)" class="btn btn-link">></button></th>
+        </tr>
+        </thead>
+        <thead>
+        <tr>
+            <th>Hétfő</th>
+            <th>Kedd</th>
+            <th>Szerda</th>
+            <th>Csütörtök</th>
+            <th>Péntek</th>
+            <th>Szombat</th>
+            <th>Vasárnap</th>
+        </tr>
+        </thead>
+        <tbody id="tablazat">
+        </tbody>
+    </table>
+    </div>
+</div>
+
+</body>
+</html>
