@@ -5,27 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Activitys.MainActivity"
-    tools:showIn="@layout/app_bar_main">
-    <com.applandeo.materialcalendarview.CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        app:eventsEnabled="true"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:selectionColor="@color/colorAccent"
-        app:todayLabelColor="#cc0000"
-        app:type="range_picker" />
-
-    <TextView
-        android:id="@+id/textView"
+    tools:context=".Activitys.MainActivity">
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Fragments.CalendarFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calendarView"
-        android:text="TextView" />
+        android:layout_marginEnd="338dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

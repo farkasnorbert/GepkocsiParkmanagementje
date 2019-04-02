@@ -3,6 +3,8 @@ package farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Activitys;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,6 +24,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.DrawableUtils;
+import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Fragments.CalendarFragment;
 import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.R;
 
 public class MainActivity extends AppCompatActivity
@@ -31,19 +34,13 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        List<EventDay> events = new ArrayList<>();
-        Calendar calendar = Calendar.getInstance();
-        events.add(new EventDay(calendar, DrawableUtils.getCircleDrawableWithText(this, "M")));
-        CalendarView calendarView = findViewById(R.id.calendarView);
-        calendarView.setEvents(events);
-        calendarView.setOnDayClickListener(eventDay -> {
-            Calendar clickedDayCalendar = eventDay.getCalendar();
-            TextView t = findViewById(R.id.textView);
-            t.setText(clickedDayCalendar.toString());
-
-        });
+        Fragment main = new CalendarFragment();
+        FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_main, main);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override
@@ -55,37 +52,14 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
         switch(id){
             case R.id.nav_gallery:
                 break;
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
