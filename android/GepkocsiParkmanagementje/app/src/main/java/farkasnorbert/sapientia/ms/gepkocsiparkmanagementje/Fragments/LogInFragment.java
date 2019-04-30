@@ -22,8 +22,8 @@ public class LogInFragment extends Fragment {
             if(getActivity()!=null) {
                 RegisterFragment registerFragment = new RegisterFragment();
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_start, registerFragment);
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.replace(R.id.fragment_start, registerFragment,"register");
+                fragmentTransaction.addToBackStack("register");
                 fragmentTransaction.commit();
             }
         });

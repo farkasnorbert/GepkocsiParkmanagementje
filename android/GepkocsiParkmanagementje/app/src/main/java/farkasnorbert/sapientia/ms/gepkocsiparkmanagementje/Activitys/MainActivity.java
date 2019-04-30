@@ -1,62 +1,69 @@
 package farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import com.applandeo.materialcalendarview.CalendarView;
-import com.applandeo.materialcalendarview.EventDay;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.DrawableUtils;
 import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Fragments.CalendarFragment;
+import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Fragments.CarsFragment;
 import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.R;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-
+implements NavigationView.OnNavigationItemSelectedListener {
+    private FragmentTransaction transaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        Fragment main = new CalendarFragment();
-        FragmentTransaction transaction = this.getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_main, main);
-        transaction.addToBackStack(null);
+        CalendarFragment main = new CalendarFragment();
+        transaction = this.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_main, main,"calendar");
+        transaction.addToBackStack("calendar");
         transaction.commit();
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if(this.getSupportFragmentManager().findFragmentByTag("calendar")!=null && this.getSupportFragmentManager().findFragmentByTag("calendar").isVisible()) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }else{
+                super.onBackPressed();
+            }
         }
     }
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch(id){
-            case R.id.nav_gallery:
+            case R.id.nav_calendar:
+                this.getSupportFragmentManager().popBackStack();
+                CalendarFragment calendar = new CalendarFragment();
+                transaction = this.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_main, calendar);
+                transaction.commit();
+                break;
+            case R.id.nav_cars:
+                if(this.getSupportFragmentManager().findFragmentByTag("cars")==null) {
+                    CarsFragment cars = new CarsFragment();
+                    transaction = this.getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment_main, cars,"cars");
+                    transaction.addToBackStack("cars");
+                    transaction.commit();
+                }
                 break;
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
