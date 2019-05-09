@@ -1,0 +1,45 @@
+package farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Fragments;
+
+import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.google.gson.Gson;
+
+import java.util.Objects;
+
+import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Models.Car;
+import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.R;
+
+
+public class CarFragment extends Fragment {
+    private static final String TAG = "CarFragment";
+    private Car car;
+
+    public CarFragment() {
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            this.car = new Gson().fromJson(bundle.getString("Car"),Car.class);
+            //Log.d(TAG,car.getNev());
+        }
+        View view = inflater.inflate(R.layout.fragment_car, container, false);
+        NavigationView navigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.nav_view);
+        navigationView.getMenu().getItem(1).setChecked(true);
+        Toolbar toolbar = view.findViewById(R.id.cars_toolbar);
+        toolbar.setTitle(car.getNev());
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_back));
+        toolbar.setNavigationOnClickListener(v -> getActivity().onBackPressed());
+        return view;
+    }
+}

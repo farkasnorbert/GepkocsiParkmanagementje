@@ -1,6 +1,8 @@
-package farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Database;
+package farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.AsyncTasks;
 
+import android.content.Context;
 import android.net.Uri;
+import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -16,15 +18,25 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-public class GetData {
-    private static final String TAG = "GetData";
+public class InsertData extends AsyncTaskLoader<String> {
+    private String table;
+    private String colums;
+    private String data;
+    private static final String TAG = "InsertData";
     private static final int CONNECTION_TIMEOUT = 10000;
     private static final int READ_TIMEOUT = 15000;
-    private String data;
 
-    public String result(String table, String cols, String where) {
+    public InsertData(Context context,String table,String columns,String data) {
+        super(context);
+        this.table=table;
+        this.data=data;
+        this.colums=columns;
+    }
+
+    @Override
+    public String loadInBackground() {
         try {
-            URL url = new URL("http://192.168.0.106/mysql/select.php");
+            URL url = new URL("http://10.0.108.182/insert.php");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(READ_TIMEOUT);
             conn.setConnectTimeout(CONNECTION_TIMEOUT);
@@ -33,7 +45,7 @@ public class GetData {
             conn.setDoOutput(true);
             Uri.Builder builder = new Uri.Builder()
                     .appendQueryParameter("table", table)
-                    .appendQueryParameter("cols", cols).appendQueryParameter("where", where);
+                    .appendQueryParameter("cols", colums).appendQueryParameter("data", data);
             String query = builder.build().getEncodedQuery();
             Log.d(TAG, query);
             OutputStream os = conn.getOutputStream();

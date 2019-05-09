@@ -10,6 +10,9 @@
         <item
             android:id="@+id/nav_cars"
             android:title="Cars" />
+        <item
+            android:id="@+id/nav_newtravel"
+            android:title="New Travel"/>
     </group>
 
 </menu>

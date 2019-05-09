@@ -16,4 +16,32 @@ public class User {
     public void Deletep(){
         this.jelszo="";
     }
+
+    public int getIdFelhasznalok() {
+        return idFelhasznalok;
+    }
+
+    public String getNev() {
+        return Nev;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getJelszo() {
+        return jelszo;
+    }
+
+    public void setIdFelhasznalok(int idFelhasznalok) {
+        this.idFelhasznalok = idFelhasznalok;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setJelszo(String jelszo) {
+        this.jelszo = jelszo;
+    }
 }

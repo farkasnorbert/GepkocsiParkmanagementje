@@ -1,4 +1,4 @@
-package farkasnorbert.sapientia.ms.gepkocsiparkmanagementje;
+package farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.AsyncTasks;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
