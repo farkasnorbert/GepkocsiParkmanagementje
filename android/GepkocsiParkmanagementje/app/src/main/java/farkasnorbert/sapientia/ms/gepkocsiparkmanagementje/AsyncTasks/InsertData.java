@@ -31,6 +31,7 @@ public class InsertData extends AsyncTaskLoader<String> {
         this.table=table;
         this.data=data;
         this.colums=columns;
+        onForceLoad();
     }
 
     @Override

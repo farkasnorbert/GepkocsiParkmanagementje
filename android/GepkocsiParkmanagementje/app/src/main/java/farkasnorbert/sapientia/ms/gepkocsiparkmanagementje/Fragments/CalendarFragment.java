@@ -22,8 +22,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.AsyncTasks.LoadTravelDates;
 import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.DrawableUtils;
-import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.AsyncTasks.LoadCarDates;
 import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Models.Travel;
 import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.R;
 
@@ -57,7 +57,7 @@ public class CalendarFragment extends Fragment implements LoaderManager.LoaderCa
     @NonNull
     @Override
     public Loader<List<Travel>> onCreateLoader(int i, @Nullable Bundle bundle) {
-        return new LoadCarDates(getActivity());
+        return new LoadTravelDates(getActivity());
     }
 
     @Override

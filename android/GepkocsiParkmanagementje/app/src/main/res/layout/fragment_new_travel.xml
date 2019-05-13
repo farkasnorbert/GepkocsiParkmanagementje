@@ -18,4 +18,169 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <Spinner
+        android:id="@+id/autok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/soforok"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/laberAutok"
+        app:layout_constraintTop_toBottomOf="@+id/cars_toolbar" />
+
+    <Spinner
+        android:id="@+id/soforok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/button_indulas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/laberSofor"
+        app:layout_constraintTop_toBottomOf="@+id/autok" />
+
+    <TextView
+        android:id="@+id/laberAutok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Auto:"
+        app:layout_constraintBottom_toTopOf="@+id/laberSofor"
+        app:layout_constraintEnd_toStartOf="@+id/autok"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cars_toolbar" />
+
+    <TextView
+        android:id="@+id/laberSofor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sofor:"
+        app:layout_constraintBottom_toTopOf="@+id/labelIndulas"
+        app:layout_constraintEnd_toStartOf="@+id/soforok"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/laberAutok" />
+
+    <TextView
+        android:id="@+id/labelIndulas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Indulas:"
+        app:layout_constraintBottom_toTopOf="@+id/labelErkezes"
+        app:layout_constraintEnd_toStartOf="@+id/button_indulas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/laberSofor" />
+
+    <Button
+        android:id="@+id/button_indulas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/button_erkezes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/labelIndulas"
+        app:layout_constraintTop_toBottomOf="@+id/soforok" />
+
+    <TextView
+        android:id="@+id/labelErkezes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Erkezes:"
+        app:layout_constraintBottom_toTopOf="@+id/labelCel"
+        app:layout_constraintEnd_toStartOf="@+id/button_erkezes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelIndulas" />
+
+    <Button
+        android:id="@+id/button_erkezes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/labelErkezes"
+        app:layout_constraintTop_toBottomOf="@+id/button_indulas" />
+
+    <TextView
+        android:id="@+id/labelCel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Celalomas:"
+        app:layout_constraintBottom_toTopOf="@+id/labelUtazascelja"
+        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelErkezes" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/editText_utazascelja"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/labelCel"
+        app:layout_constraintTop_toBottomOf="@+id/button_erkezes" />
+
+    <TextView
+        android:id="@+id/labelUtazascelja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Utazas Celja:"
+        app:layout_constraintBottom_toTopOf="@+id/labelUtasokszama"
+        app:layout_constraintEnd_toStartOf="@+id/editText_utazascelja"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelCel" />
+
+    <EditText
+        android:id="@+id/editText_utazascelja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/editText_Utasokszama"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/labelUtazascelja"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <TextView
+        android:id="@+id/labelUtasokszama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Utasok szama:"
+        app:layout_constraintBottom_toTopOf="@+id/button_Submit"
+        app:layout_constraintEnd_toStartOf="@+id/editText_Utasokszama"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelUtazascelja" />
+
+    <EditText
+        android:id="@+id/editText_Utasokszama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/button_Dismiss"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/labelUtasokszama"
+        app:layout_constraintTop_toBottomOf="@+id/editText_utazascelja" />
+
+    <Button
+        android:id="@+id/button_Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Elkuld"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_Dismiss"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelUtasokszama" />
+
+    <Button
+        android:id="@+id/button_Dismiss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_Submit"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Utasokszama" />
+
 </android.support.constraint.ConstraintLayout>

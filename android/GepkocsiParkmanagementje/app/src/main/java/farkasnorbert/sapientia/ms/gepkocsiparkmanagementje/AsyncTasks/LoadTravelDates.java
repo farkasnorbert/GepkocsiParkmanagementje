@@ -18,10 +18,10 @@ import java.util.List;
 import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Database.GetData;
 import farkasnorbert.sapientia.ms.gepkocsiparkmanagementje.Models.Travel;
 
-public class LoadCarDates extends AsyncTaskLoader<List<Travel>> {
-    private static final String TAG = "LoadCarDates";
+public class LoadTravelDates extends AsyncTaskLoader<List<Travel>> {
+    private static final String TAG = "LoadTravelDates";
 
-    public LoadCarDates(Context context) {
+    public LoadTravelDates(Context context) {
         super(context);
         onForceLoad();
     }

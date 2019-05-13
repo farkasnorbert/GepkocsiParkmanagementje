@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.AsyncTaskLoader;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +31,7 @@ public class LoadCars extends AsyncTaskLoader<List<Car>> {
     @Override
     public List<Car> loadInBackground() {
         String t = new GetData().result("auto", "*", "1");
+        Log.d(TAG,t);
         List<Car> Cars = new ArrayList<>();
         if (t != null) {
             try {

@@ -29,16 +29,19 @@ public class UpdateData extends AsyncTaskLoader<String> {
 
     public UpdateData(Context context, String table, String colums, String data, String where) {
         super(context);
+        Log.d(TAG,data);
         this.table = table;
         this.colums = colums;
         this.data = data;
         this.where = where;
+        onForceLoad();
     }
 
     @Override
     public String loadInBackground() {
+        Log.d(TAG,"itt2");
         try {
-            URL url = new URL("http://10.0.108.182/insert.php");
+            URL url = new URL("http://192.168.0.106/mysql/update.php");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(READ_TIMEOUT);
             conn.setConnectTimeout(CONNECTION_TIMEOUT);
@@ -63,7 +66,6 @@ public class UpdateData extends AsyncTaskLoader<String> {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(input));
                 StringBuilder result = new StringBuilder();
                 String line;
-
                 while ((line = reader.readLine()) != null) {
                     result.append(line);
                 }
